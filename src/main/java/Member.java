@@ -12,6 +12,10 @@ public class Member {
         this.birthYear = birthYear;
     }
 
+    public String getData(){
+
+        return  name +  " " + surname + " " + birthYear;
+    }
 
 
 
