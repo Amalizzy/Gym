@@ -1,4 +1,8 @@
-import org.junit.Test;
+//import org.junit.Test;
+
+
+import io.qameta.allure.Description;
+import org.testng.annotations.Test;
 
 public class GymTest {
 
@@ -18,7 +22,8 @@ public class GymTest {
     }
 
     @Test
-    public void testPrintAgeOfMember(){
+    @Description("some")
+    public void testPrintAgeOfMember() {
 
         GymArray gymArray = new GymArray(10);
 
@@ -29,8 +34,9 @@ public class GymTest {
         gymArray.addMember(marko);
 
         gymArray.printMembersOfAge();
-
     }
+
+
 
 
 

@@ -1,16 +1,97 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.3"
+    }
 }
 
-group 'Gym'
-version '1.0-SNAPSHOT'
+plugins {
+    id 'java'
+ }
 
-sourceCompatibility = 1.8
+apply plugin: 'io.qameta.allure'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    compile group: 'org.testng', name: 'testng', version: '6.14.3'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+
+allure {
+    version = '2.6.0'
+    autoconfigure = false
+    aspectjweaver = true
+    allureJavaVersion = '2.9.0'
+    useTestNG {
+        version = '2.6.0'
+    }
+    resultsDir = file("${projectDir.absolutePath}/build/allure-results")
+    reportDir = file("${projectDir.absolutePath}/build/allure-report")
+}
+
+    group 'Gym'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+
+
+    task gymJar(type: Jar) {
+        manifest {
+            attributes 'Implementation-Title': 'Gradle Jar File Example',
+                    'Implementation-Version': version,
+                    'Main-Class': 'App'
+        }
+        baseName = project.name + '-all'
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+        with jar
+    }
+
+
+    test {
+        useTestNG() {
+            useDefaultListeners = true
+        }
+    }
+
+task gymTest(type: Test) {
+    description = "Run tests"
+    jvmArgs += ["-XX:MaxPermSize=256m"]
+
+    useTestNG() {
+        useDefaultListeners = true
+        suites 'src/test/resources/testng.xml'
+    }
+}
+
+task copyHistory(type: Copy) {
+    from 'build/allure-report/history'
+    into 'build/allure-results/history'
+}
+
+task copyReports(type: Copy) {
+    from 'build/reports/tests/test'
+    into 'build/allure-report/gradle-report'
+}
+
+task report {
+    dependsOn 'allureReport', 'allureServe'
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'allureReport') {
+        task.dependsOn copyHistory
+        task.finalizedBy copyReports
+    }
+    if (task.name == 'allureServe') {
+        task.dependsOn test, 'allureReport'
+    }
+}
+
+tasks.withType(Test)*.finalizedBy 'allureReport'

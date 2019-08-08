@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 public class Member {
 
     public String name;
@@ -17,6 +19,19 @@ public class Member {
         return  name +  " " + surname + " " + birthYear;
     }
 
+    public boolean IsOfAge(){
 
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+
+        if(year-birthYear>18){
+
+            return true;
+        }else{
+
+            return false;
+        }
+
+
+    }
 
 }
