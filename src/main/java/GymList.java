@@ -4,9 +4,14 @@ public class GymList {
 
     private ArrayList<Member> members;
 
+    private ArrayList<Equipment> equipments;
+
+
+
     public GymList(){
 
         this.members = new ArrayList<Member>();
+        this.equipments = new ArrayList<Equipment>();
     }
 
     public void addMember(Member newMember){
@@ -43,7 +48,22 @@ public class GymList {
         return membersOfAge;
     }
 
+    public void addEquipment(Equipment newEquipment){
 
+        equipments.add(newEquipment);
+    }
+
+    public int summariseEquipment() {
+
+        int summary = 0;
+
+        for (Equipment equipment : equipments) {
+
+            summary = summary + equipment.price;
+        }
+
+        return summary;
+    }
 
 
 
