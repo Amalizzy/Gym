@@ -2,7 +2,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,50 +16,25 @@ public class FileExperimentTest {
     }
 
     @Test
-    public void testWriteToFile() {
+    public void testWriteAndReadFromFile(){
 
-        fileExperiment.writeToFile();
-    }
+        String inputDirectory = "C:/Users/danij/";
+        String inputFileName = "Names.txt";
+        String outputDirectory = "C:/Users/danij/";
+        String outputFileName = "TestFile.txt";
 
-    @Test
-    public void testWriteTextToFile(){
+        List<String> names = fileExperiment.getFileLines(inputDirectory, inputFileName);
 
-        fileExperiment.writeTextToFile("Lorem Ipsum", "C:/Users/danij/Hello World.txt" );
+        for (String name : names) {
 
-    }
+            fileExperiment.writeLineToFile(outputDirectory, outputFileName, name);
+        }
 
-    @Test
-    public void testWriteTextToFileAnother(){
+        List<String> outputFileLines = fileExperiment.getFileLines(outputDirectory, outputFileName);
 
-        fileExperiment.writeTextToFileAnother("Lorem Ipsum", "C:/Users/danij/output.txt");
+        Assert.assertEquals(outputFileLines.size(), names.size());
 
-    }
 
-    @Test
-    public void testWriteTextToFileWithBuffer(){
 
-        fileExperiment.writeTextToFileWithBuffer();
-
-    }
-
-    @Test
-    public void testGetListOfLinesFromFile(){
-
-        String text = "Lorem ipsum";
-
-        fileExperiment.writeTextToFileAnother(text, "C:/Users/danij/output.txt");
-
-        ArrayList<String> fileLines = fileExperiment.getListOfLinesFromFileBuffer("C:/Users/danij/output.txt");
-
-        Assert.assertEquals(fileLines.size(),1);
-        Assert.assertEquals(fileLines.get(0), text);
-    }
-
-    @Test
-    public void testgetFileLines(){
-
-        List<String> list = fileExperiment.getFileLines("C:/Users/danij/","output.txt");
-
-        Assert.assertEquals(list.size(), 1);
     }
 }

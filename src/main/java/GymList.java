@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class GymList {
 
@@ -31,9 +32,9 @@ public class GymList {
 //        }
     }
 
-    public ArrayList<Member> getMembersOfAge(){
+    public List<Member> getMembersOfAge(){
 
-        ArrayList<Member> membersOfAge = new ArrayList<Member>();
+        List<Member> membersOfAge = new ArrayList<Member>();
 
 
         for (Member member: members) {

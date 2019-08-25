@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GymListTest {
 
@@ -39,7 +40,7 @@ public class GymListTest {
         Member marko = new Member("Marko", "Markovic", 2012);
         gymList.addMember(marko);
 
-        ArrayList<Member> membersOfAge = gymList.getMembersOfAge();
+        List<Member> membersOfAge = gymList.getMembersOfAge();
 
         Assert.assertEquals(1, membersOfAge.size() );
 
