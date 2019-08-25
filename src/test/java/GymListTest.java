@@ -1,6 +1,7 @@
 //import org.junit.Assert;
 //import org.junit.Test;
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class GymListTest {
 
     @Test
+    @Description("add and get members")
     public void testAddAndGetMembers(){
 
         GymList gymList = new GymList();
@@ -26,6 +28,7 @@ public class GymListTest {
     }
 
     @Test
+    @Description("get members of age")
     public void testGetMembersOfAge(){
 
         GymList gymList = new GymList();

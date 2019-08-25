@@ -1,9 +1,11 @@
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 public class EmployeTest {
 
 
     @Test
+    @Description("add employe")
     public void testAddEmploye(){
 
         Store store = new Store();

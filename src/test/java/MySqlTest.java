@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 import java.sql.Connection;
@@ -8,6 +9,7 @@ import java.sql.SQLException;
 public class MySqlTest {
 
     @Test
+    @Description("my sql connection")
     public void testMySqlConnection()throws ClassNotFoundException, SQLException {
 
         Class.forName("com.mysql.jdbc.Driver");

@@ -34,8 +34,8 @@ allure {
     useTestNG {
         version = '2.6.0'
     }
-    resultsDir = file("${projectDir.absolutePath}/build/allure-results")
-    reportDir = file("${projectDir.absolutePath}/build/allure-report")
+//    resultsDir = file("${projectDir.absolutePath}/build/allure-results")
+//    reportDir = file("${projectDir.absolutePath}/build/allure-report")
 }
 
     group 'Gym'
@@ -72,28 +72,31 @@ task gymTest(type: Test) {
     }
 }
 
-task copyHistory(type: Copy) {
-    from 'build/allure-report/history'
-    into 'build/allure-results/history'
-}
+//task copyHistory(type: Copy) {
+//    from 'build/allure-report/history'
+//    into 'build/allure-results/history'
+//}
+//
+//task copyReports(type: Copy) {
+//    from 'build/reports/tests/test'
+//    into 'build/allure-report/gradle-report'
+//}
+//
+//task report {
+//    dependsOn 'allureReport', 'allureServe'
+//}
+//
+//tasks.whenTaskAdded { task ->
+//    if (task.name == 'allureReport') {
+//        task.dependsOn copyHistory
+//        task.finalizedBy copyReports
+//    }
+//    if (task.name == 'allureServe') {
+//        task.dependsOn test, 'allureReport'
+//    }
+//}
+//
+//tasks.withType(Test)*.finalizedBy 'allureReport'
 
-task copyReports(type: Copy) {
-    from 'build/reports/tests/test'
-    into 'build/allure-report/gradle-report'
-}
 
-task report {
-    dependsOn 'allureReport', 'allureServe'
-}
 
-tasks.whenTaskAdded { task ->
-    if (task.name == 'allureReport') {
-        task.dependsOn copyHistory
-        task.finalizedBy copyReports
-    }
-    if (task.name == 'allureServe') {
-        task.dependsOn test, 'allureReport'
-    }
-}
-
-tasks.withType(Test)*.finalizedBy 'allureReport'

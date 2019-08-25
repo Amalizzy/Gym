@@ -4,9 +4,27 @@
 <suite name="Gym">
     <test name="Payments Create">
         <classes>
-            <class name="GymTest"/>
+            <class name="EmployeTest"/>
         </classes>
     </test>
+    <test name="Member">
+        <classes>
+            <class name="GymListTest"/>
+        </classes>
+    </test>
+
+    <test name="Member">
+        <classes>
+            <class name="GymListTest"/>
+        </classes>
+    </test>
+
+    <test name="Member">
+        <classes>
+            <class name="GymListTest"/>
+        </classes>
+    </test>
+
     <test name="Member">
         <classes>
             <class name="GymListTest"/>

@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -6,6 +7,7 @@ import java.util.ArrayList;
 public class EquipmentTest {
 
     @Test
+    @Description("summirise equipment")
     public void testSummiriseEquipments(){
 
         GymList gymList = new GymList();

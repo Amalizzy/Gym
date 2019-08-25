@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 public class GymTest {
 
     @Test
+    @Description("add and print members")
     public void testAddAndPrintMembers(){
 
         GymArray gymArray = new GymArray(10);
