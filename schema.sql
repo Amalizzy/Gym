@@ -1,0 +1,18 @@
+CREATE SCHEMA `Gym` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
+
+
+CREATE TABLE IF NOT EXISTS gym_member (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+	surname VARCHAR(255) NOT NULL,
+	birth_year INT NOT NULL,
+    PRIMARY KEY (id)
+); 
+
+
+CREATE TABLE IF NOT EXISTS equipment (
+	id INT AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    price INT NOT NULL,
+    PRIMARY KEY (id)
+);
